@@ -6,8 +6,17 @@
     <meta name="description" content="Register today!" />
     <link rel="icon" type="image/x-icon" href="images/logo-nobackground.png" />
     <link rel="stylesheet" href="dist/css/index.css" />
-    <script
+    <!-- <script
       src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script> -->
+    <!-- <script src="JS/index.js" defer></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"
       defer
     ></script>
     <script
@@ -33,8 +42,13 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav">
-              <a class="nav-link active" href="#">Login</a>
-
+              <a
+                href="#"
+                class="nav-link active"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+                >Login
+              </a>
               <a class="nav-link" href="listings/">Listings</a>
             </ul>
           </div>
@@ -50,7 +64,12 @@
             <div class="col-lg-6 vh-100 d-flex align-items-center">
               <div class="mx-5 px-5">
                 <h1>Join today and get 1000 credits for free!</h1>
-                <button class="btn btn-lg bg-info mt-5 px-5" type="submit">
+                <button
+                  class="btn btn-lg bg-info mt-5 px-5 text-white"
+                  type="submit"
+                  data-bs-toggle="modal"
+                  data-bs-target="#registrationModal"
+                >
                   Register
                 </button>
               </div>
@@ -69,6 +88,139 @@
           </div>
         </div>
       </section>
+
+      <!-- Register modal -->
+      <div
+        class="modal fade"
+        id="registrationModal"
+        tabindex="-1"
+        aria-labelledby="registrationModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title text-center w-100"
+                id="registrationModalLabel"
+              >
+                Registration
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" required />
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    aria-describedby="email"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="avatar" class="form-label">Avatar</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="avatar"
+                    required
+                  />
+                </div>
+                <button
+                  class="btn btn-lg bg-info px-5 text-white d-flex"
+                  type="submit"
+                  id="form-btn"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Register modal -->
+
+      <!-- Login modal -->
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title text-center w-100"
+                id="registrationModalLabel"
+              >
+                Login
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    aria-describedby="emailHelp"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    required
+                  />
+                </div>
+
+                <button
+                  class="btn btn-lg bg-info px-5 text-white d-flex"
+                  type="submit"
+                  id="form-btn"
+                >
+                  Login
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Login modal -->
     </main>
   </body>
 </html>

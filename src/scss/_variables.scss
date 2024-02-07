@@ -16,6 +16,16 @@ $cyan:    #DE987B;
 
 @import url('https://fonts.googleapis.com/css2?family=Koh+Santepheap&display=swap');
 
-h1 {
+h1, h5 {
     font-family: 'Koh Santepheap', serif;
+}
+
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 3.5rem);
+}
+
+#form-btn {
+    margin: auto;
 }
