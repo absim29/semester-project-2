@@ -5,13 +5,14 @@
 // $pink:    #d63384;
 // $red:     #dc3545;
 // $orange:  #fd7e14;
-// $yellow:  #E7CEC2;
+$yellow:  #718E7D;
 $green:   #F9DCCB;
 
 // $teal:    #20c997;
 
 $cyan:    #DE987B;
 // scss-docs-end color-variables
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Koh+Santepheap&display=swap');
@@ -28,4 +29,14 @@ h1, h5 {
 
 #form-btn {
     margin: auto;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
