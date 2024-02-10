@@ -89,7 +89,7 @@
       </div>
 
       <div class="container">
-        <div class="row">
+        <div class="row" id="listing-display">
           <!-- Column 1 -->
           <div class="col d-flex">
             <div class="col">
@@ -205,29 +205,45 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form id="registrationForm">
                 <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="name" required />
+                  <label for="reg-name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="reg-name"
+                    id="reg-name"
+                    required
+                    placeholder="Username"
+                    pattern="[A-Za-z0-9_]+"
+                    title="Name must not contain punctuation symbols apart from underscore (_)"
+                  />
                 </div>
 
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="reg-email" class="form-label">Email</label>
                   <input
                     type="email"
                     class="form-control"
-                    id="email"
+                    name="reg-email"
+                    id="reg-email"
                     aria-describedby="email"
                     required
+                    placeholder="Please use a Noroff email"
+                    pattern="^[\w\-.]+@(stud.)?noroff.no$"
+                    title="The email value must be a valid stud.noroff.no email address."
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
+                  <label for="reg-password" class="form-label">Password</label>
                   <input
                     type="password"
                     class="form-control"
-                    id="password"
+                    name="reg-password"
+                    id="reg-password"
                     required
+                    placeholder="Miminum 8 characters"
+                    minlength="8"
                   />
                 </div>
                 <div class="mb-3">
@@ -236,13 +252,14 @@
                     type="text"
                     class="form-control"
                     id="avatar"
-                    required
+                    placeholder="Optional"
                   />
                 </div>
+                <div class="text-danger text-center" id="error"></div>
                 <button
                   class="btn btn-lg bg-info px-5 text-white d-flex"
                   type="submit"
-                  id="form-btn"
+                  id="reg-btn"
                 >
                   Submit
                 </button>
@@ -278,23 +295,27 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form id="loginForm">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="login-email" class="form-label">Email</label>
                   <input
                     type="email"
+                    name="login-email"
                     class="form-control"
-                    id="email"
-                    aria-describedby="emailHelp"
+                    id="login-email"
+                    aria-describedby="emai"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
+                  <label for="login-password" class="form-label"
+                    >Password</label
+                  >
                   <input
                     type="password"
+                    name="login-password"
                     class="form-control"
-                    id="password"
+                    id="login-password"
                     required
                   />
                 </div>
@@ -302,7 +323,7 @@
                 <button
                   class="btn btn-lg bg-info px-5 text-white d-flex"
                   type="submit"
-                  id="form-btn"
+                  id="login-btn"
                 >
                   Login
                 </button>
@@ -315,7 +336,7 @@
     </main>
     <!-- Footer -->
     <footer class="footer bg-info text-center py-2">
-      <div class="container p-2 d-flex justify-content-center gap-4">
+      <div class="p-2 d-flex justify-content-center gap-4">
         <a href="https://www.instagram.com/" aria-label="instagram">
           <i
             class="fa-brands fa-square-instagram fa-2xl"
