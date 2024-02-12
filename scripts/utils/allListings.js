@@ -7,7 +7,7 @@ async function displayListings(listings, filterCallback) {
 
     listings.filter(filterCallback).forEach((post) => {
         const currentPost = generatePostHtml(post);
-        postsContainer.appendChild(currentPost);
+        listingsContainer.appendChild(currentPost);
     });
 
 }
