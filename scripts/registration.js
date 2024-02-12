@@ -17,7 +17,7 @@ async function registerUser(user) {
         console.log(myData);
         window.location.href = '../';
     } catch (error) {
-        document.querySelector('#error').innerHTML = '<div class="error">Please check that the information is correct</div>';
+        document.querySelector('#reg-error').innerHTML = '<div class="reg-error pb-2">Please check that the information is correct</div>';
     }
 }
 

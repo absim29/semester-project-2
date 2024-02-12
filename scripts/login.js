@@ -19,7 +19,7 @@ async function loginUser(user) {
         addToLocalStorage('userEmail', userLoginData.email);
         window.location.href = '../listings';
     } catch (error) {
-        document.querySelector('#error').innerHTML = '<div class="error">Wrong email or password</div>';
+        document.querySelector('#login-error').innerHTML = '<div class="login-error pb-2">Wrong email or password</div>';
     }
 }
 
