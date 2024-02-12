@@ -6,10 +6,8 @@
     <meta name="description" content="Browse our listings" />
     <link rel="icon" type="image/x-icon" href="/images/logo-nobackground.png" />
     <link rel="stylesheet" href="/dist/css/index.css" />
-    <!-- <script
-      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-      defer
-    ></script> -->
+    <script type="module" src="/scripts/listingsPage.js"></script>
+    <script type="module" src="/scripts/utils/logout.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
       defer
@@ -42,36 +40,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <ul class="navbar-nav">
-                <a
-                  href=""
-                  class="nav-link"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginModal"
-                  >Login
-                </a>
-                <a
-                  href=""
-                  class="nav-link"
-                  data-bs-toggle="modal"
-                  data-bs-target="#registrationModal"
-                  >Register
-                </a>
+                <a href="/" class="nav-link" id="logout-button">Logout </a>
+                <a href="/profile/" class="nav-link">Profile </a>
                 <a class="nav-link active" href="#">Listings</a>
+                <a class="nav-link" href="/new-listing/">New Listing</a>
               </ul>
             </div>
           </div>
         </nav>
         <form class="form-inline mt-2 mt-md-0 d-flex align-items-center">
-          <input
-            class="form-control mr-sm-2"
-            type="text"
-            placeholder="Search"
-            aria-label="Search"
-            id="floatingInput"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
+          <div class="form-floating">
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+              id="searchInput"
+            />
+            <label for="searchInput" class="d-flex align-items-center gap-2">
+              <i class="fa-solid fa-magnifying-glass"></i> Search
+            </label>
+          </div>
         </form>
       </div>
     </header>
@@ -89,9 +78,17 @@
       </div>
 
       <div class="container">
-        <div class="row" id="listing-display">
+        <div
+          class="row d-flex justify-content-center my-4"
+          id="listing-display"
+        >
+          <div class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
           <!-- Column 1 -->
-          <div class="col d-flex">
+          <!-- <div class="col d-flex">
             <div class="col">
               <img
                 src="/images/welcome-image.jpg"
@@ -118,9 +115,9 @@
                 View
               </button>
             </div>
-          </div>
+          </div> -->
           <!-- Column 2 -->
-          <div class="col d-flex">
+          <!-- <div class="col d-flex">
             <div class="col">
               <img
                 src="/images/welcome-image.jpg"
@@ -147,9 +144,9 @@
                 View
               </button>
             </div>
-          </div>
+          </div> -->
           <!-- Column 3 -->
-          <div class="col d-flex">
+          <!-- <div class="col d-flex">
             <div class="col">
               <img
                 src="/images/welcome-image.jpg"
@@ -176,7 +173,7 @@
                 View
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
