@@ -1,14 +1,15 @@
 function generatePostHtml(post) {
-    const { title, body, media } = post;
+    const { title, description, media, endsAt, _count } = post;
+    const { bids } = _count;
 
     const postWrapper = document.createElement('div');
-    postWrapper.classList.add('conl', 'd-flex');
+    postWrapper.classList.add('col-xs', 'col-md-5', 'col-lg-3', 'col-xl-3', 'mb-5', 'mx-1', 'overflow-hidden', 'd-flex', 'flex-column', 'card', 'py-2', 'shadow-sm');
 
     const cardLeft = document.createElement('div');
     cardLeft.classList.add('col');
 
     const image = document.createElement('img');
-    image.classList.add('img-fluid');
+    image.classList.add('listing-img');
     if (media) {
         image.src = media;
     } else {
@@ -22,11 +23,11 @@ function generatePostHtml(post) {
 
     const bidInfo = document.createElement('div');
 
-    const price = document.createElement('p');
-    price.textContent = price;
+    const bidCount = document.createElement('p');
+    bidCount.textContent = `Number of Bids: ${bids}`;
 
     const deadline = document.createElement('p');
-    deadline.textContent = deadline;
+    deadline.textContent = `Ends At: ${endsAt}`;
 
     const cardRight = document.createElement('div');
     cardRight.classList.add('col', 'd-flex', 'flex-column', 'justify-content-between');
@@ -36,20 +37,21 @@ function generatePostHtml(post) {
     text.textContent = description;
 
     const viewButton = document.createElement('button');
-    viewButton.classList.add('btn', 'btn-lg', 'bg-warning', 'mt-5', 'px-5', 'text-white');
-    // viewButton.addEventListener('click', () => {
-    //     window.location.href = `/single-listing/?id=${post.id}`;
-    // });
+    viewButton.textContent = "View";
+    viewButton.classList.add('btn', 'btn-lg', 'bg-warning', 'mt-5', 'px-5', 'text-white', 'w-75', 'mx-auto');
+    viewButton.addEventListener('click', () => {
+        window.location.href = `/single-listing/?id=${post.id}`;
+    });
 
 
 
-    bidInfo.append(price, deadline);
+    bidInfo.append(bidCount, deadline);
 
-    cardLeft.append(image, title, bidInfo);
+    cardLeft.append(image, titleElement, bidInfo);
 
     cardRight.append(text, viewButton);
 
-    postWrapper.appendChild(cardLeft, cardRight);
+    postWrapper.append(cardLeft, cardRight);
 
     return postWrapper;
 }
