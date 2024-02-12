@@ -10,6 +10,10 @@ function generatePostHtml(post) {
 
     const image = document.createElement('img');
     image.classList.add('listing-img');
+    image.addEventListener('error', function () {
+        // Set src attribute to fallback image path if the original image fails to load
+        image.src = '../../images/logo.png';
+    });
     if (media) {
         image.src = media;
     } else {
