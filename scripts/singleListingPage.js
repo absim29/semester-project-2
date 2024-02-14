@@ -1,8 +1,11 @@
 import { getSinglePost, singlePostId } from "./utils/singleListing.js";
 import { generateSinglePostHtml } from "./utils/generateSinglePostHTML.js";
 import { ifAuthor } from "./utils/checkAuthor.js";
+import { deletePost } from "./deleteListing.js";
+import { editPost } from "./editListing.js";
 
 const listingContainer = document.querySelector('#listing-display');
+const postForm = document.querySelector('#editPostForm');
 
 async function displaySinglePost(post) {
     listingContainer.textContent = '';
@@ -19,16 +22,28 @@ async function displaySinglePost(post) {
 
         const editButton = document.createElement('button');
         editButton.classList.add('btn', 'btn-lg', 'bg-warning', 'mt-5', 'px-5', 'text-white', 'w-50', 'mx-auto');
+        editButton.id = 'edit-button';
+        editButton.setAttribute('data-bs-toggle', 'modal');
+        editButton.setAttribute('data-bs-target', '#editPostModal');
         editButton.textContent = 'Edit';
-        editButton.addEventListener('click', () => {
-            // Handle edit functionality
+
+        postForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            await editPost(post);
+            console.log('Post edited successfully.');
+            window.location.reload();
         });
 
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('btn', 'btn-lg', 'bg-warning', 'mt-5', 'px-5', 'text-white', 'w-50', 'mx-auto');
+        deleteButton.id = 'delete-button';
         deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', () => {
-            // Handle delete functionality
+
+        deleteButton.addEventListener('click', async (event) => {
+            event.preventDefault();
+            await deletePost(post);
+            console.log('Post deleted successfully.');
+            window.location.href = '/profile';
         });
 
         extraButtons.append(editButton, deleteButton);
