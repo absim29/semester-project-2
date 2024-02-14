@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/dist/css/index.css" />
     <script type="module" src="/scripts/profilePage.js"></script>
     <script type="module" src="/scripts/utils/logout.js"></script>
+    <script type="module" src="/scripts/utils/changeAvatar.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
       defer
@@ -87,37 +88,55 @@
               <span class="visually-hidden">Loading...</span>
             </div>
           </div>
-          <!-- Column 1 -->
-          <!-- <div class="col d-flex">
-            <div class="col">
-              <img
-                src="/images/welcome-image.jpg"
-                alt="Image of product"
-                class="img-fluid"
-              />
-              <h3 class="text-center">Title</h3>
-              <div>
-                <p>Price: $100</p>
-                <p>Bids: 5</p>
-                <p>Deadline: February 15, 2024</p>
-              </div>
-            </div>
-
-            <div class="col d-flex flex-column justify-content-between">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aperiam, doloribus. Doloremque at soluta accusamus veniam earum
-                numquam qui ut vel cumque minus? Necessitatibus quaerat, nemo
-                non qui quidem corrupti vero!
-              </p>
-
-              <button class="btn btn-lg bg-warning mt-5 px-5 text-white">
-                View
-              </button>
-            </div>
-          </div> -->
         </div>
       </div>
+
+      <!-- Change avatar modal -->
+      <div
+        class="modal fade"
+        id="avatarModal"
+        tabindex="-1"
+        aria-labelledby="avatarModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center w-100" id="avatarModalLabel">
+                Change avatar
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="avatarForm">
+                <div class="mb-3">
+                  <label for="avatar" class="form-label">Avatar</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="avatar"
+                    placeholder="Enter your URL here"
+                  />
+                </div>
+                <div class="text-danger text-center" id="avatar-error"></div>
+                <button
+                  class="btn btn-lg bg-info px-5 text-white d-flex"
+                  type="submit"
+                  id="avatar-btn"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Change avatar modal -->
     </main>
     <!-- Footer -->
     <footer class="footer bg-info text-center py-2">
