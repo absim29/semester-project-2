@@ -17,6 +17,7 @@ async function loginUser(user) {
         const token = userLoginData.accessToken;
         addToLocalStorage('accessToken', token);
         addToLocalStorage('userEmail', userLoginData.email);
+        addToLocalStorage('userName', userLoginData.name);
         window.location.href = '../listings';
     } catch (error) {
         document.querySelector('#login-error').innerHTML = '<div class="login-error pb-2">Wrong email or password</div>';

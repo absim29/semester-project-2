@@ -9,4 +9,5 @@ export function getFromLocalStorage(key) {
 export function removeFromLocalStorage() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName');
 }

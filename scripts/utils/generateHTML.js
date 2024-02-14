@@ -3,13 +3,13 @@ function generatePostHtml(post) {
     const { bids } = _count;
 
     const postWrapper = document.createElement('div');
-    postWrapper.classList.add('col-xs', 'col-md-5', 'col-lg-3', 'col-xl-3', 'mb-5', 'mx-1', 'overflow-hidden', 'd-flex', 'flex-column', 'card', 'py-2', 'shadow-sm');
+    postWrapper.classList.add('col-xs', 'col-md-5', 'col-lg-3', 'col-xl-3', 'mb-5', 'mx-1', 'overflow-hidden', 'd-flex', 'flex-column', 'card', 'py-2', 'shadow-sm', 'text-center');
 
     const cardLeft = document.createElement('div');
     cardLeft.classList.add('col');
 
     const image = document.createElement('img');
-    image.classList.add('listing-img');
+    image.classList.add('listing-img', 'p-1');
     image.addEventListener('error', function () {
         // Set src attribute to fallback image path if the original image fails to load
         image.src = '../../images/logo.png';
