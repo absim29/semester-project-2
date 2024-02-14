@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.log(profileData);
 
         // Fetch user listings
-        const listingsResponse = await fetch(`https://api.noroff.dev/api/v1/auction/profiles/${name}/listings`, {
+        const listingsResponse = await fetch(`${PROFILES_API_URL}/${name}/listings`, {
             method: 'GET',
             headers: { Authorization: `Bearer ${accessToken}` },
         });

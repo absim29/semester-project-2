@@ -9,7 +9,7 @@ function userProfileHTML(profileData) {
     cardOne.classList.add('col', 'd-flex', 'flex-lg-row', 'flex-md-row', 'flex-column', 'gap-3');
 
     const profilePic = document.createElement('img');
-    profilePic.classList.add('single-img', 'img-fluid');
+    profilePic.classList.add('single-img', 'img-fluid', 'pe-auto');
     profilePic.addEventListener('error', function () {
         // Set src attribute to fallback image path if the original image fails to load
         profilePic.src = '../../images/logo.png';
@@ -20,6 +20,8 @@ function userProfileHTML(profileData) {
         profilePic.src = '../../images/logo.png';
     }
     profilePic.alt = name;
+    profilePic.setAttribute('data-bs-toggle', 'modal');
+    profilePic.setAttribute('data-bs-target', '#avatarModal');
 
     const nameElement = document.createElement('h3');
     nameElement.classList.add('text-center');
