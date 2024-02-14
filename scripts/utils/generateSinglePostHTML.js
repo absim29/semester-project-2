@@ -49,7 +49,7 @@ function generateSinglePostHtml(post) {
 
     const viewButton = document.createElement('button');
     viewButton.textContent = "Bid";
-    viewButton.classList.add('btn', 'btn-lg', 'bg-warning', 'mt-5', 'px-5', 'text-white', 'w-50', 'mx-auto');
+    viewButton.classList.add('btn', 'btn-lg', 'bg-info', 'mt-5', 'px-5', 'text-white', 'w-50', 'mx-auto');
 
     bidInfo.append(bidCount, deadline);
 
