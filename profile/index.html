@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse our listings" />
+    <link rel="icon" type="image/x-icon" href="/images/logo-nobackground.png" />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script type="module" src="/scripts/profilePage.js"></script>
+    <script type="module" src="/scripts/utils/logout.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/40355c2075.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>BidBay | Listings</title>
+  </head>
+  <body class="bg-success">
+    <header class="bg-info fixed-top">
+      <div class="d-flex justify-content-between px-1 py-1">
+        <nav class="navbar navbar-expand-lg" role="navigation">
+          <div class="container-fluid">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <ul class="navbar-nav">
+                <a href="/" class="nav-link" id="logout-button">Logout </a>
+                <a href="#" class="nav-link active">Profile </a>
+                <a class="nav-link" href="/listings/">Listings</a>
+                <a class="nav-link" href="/new-listing/">New Listing</a>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <form class="form-inline mt-2 mt-md-0 d-flex align-items-center">
+          <div class="form-floating">
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+              id="searchInput"
+            />
+            <label for="searchInput" class="d-flex align-items-center gap-2">
+              <i class="fa-solid fa-magnifying-glass"></i> Search
+            </label>
+          </div>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <div class="col d-flex justify-content-center mt-5">
+        <a href="/"
+          ><img
+            class="mt-5"
+            src="/images/logo-nobackground.png"
+            alt="logo"
+            width="150"
+            height="150"
+        /></a>
+      </div>
+
+      <div class="container">
+        <div
+          class="row d-flex justify-content-center my-4"
+          id="profileContainer"
+        >
+          <div class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <!-- Column 1 -->
+          <!-- <div class="col d-flex">
+            <div class="col">
+              <img
+                src="/images/welcome-image.jpg"
+                alt="Image of product"
+                class="img-fluid"
+              />
+              <h3 class="text-center">Title</h3>
+              <div>
+                <p>Price: $100</p>
+                <p>Bids: 5</p>
+                <p>Deadline: February 15, 2024</p>
+              </div>
+            </div>
+
+            <div class="col d-flex flex-column justify-content-between">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aperiam, doloribus. Doloremque at soluta accusamus veniam earum
+                numquam qui ut vel cumque minus? Necessitatibus quaerat, nemo
+                non qui quidem corrupti vero!
+              </p>
+
+              <button class="btn btn-lg bg-warning mt-5 px-5 text-white">
+                View
+              </button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="footer bg-info text-center py-2">
+      <div class="p-2 d-flex justify-content-center gap-4">
+        <a href="https://www.instagram.com/" aria-label="instagram">
+          <i
+            class="fa-brands fa-square-instagram fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://twitter.com/" aria-label="twitter">
+          <i
+            class="fa-brands fa-square-x-twitter fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://www.facebook.com/" aria-label="facebook">
+          <i
+            class="fa-brands fa-square-facebook fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://www.threads.net/" aria-label="threads">
+          <i
+            class="fa-brands fa-square-threads fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+      </div>
+      Copyright &copy; 2024 BidBay Online Auction
+    </footer>
+  </body>
+</html>
