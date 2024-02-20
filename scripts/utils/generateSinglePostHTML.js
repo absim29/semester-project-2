@@ -1,6 +1,6 @@
 import { ifAuthor } from "./checkAuthor.js";
+import { bidOnListing } from "../bid.js";
 const { isAuthor } = await ifAuthor();
-
 
 function generateSinglePostHtml(post) {
 
@@ -54,11 +54,46 @@ function generateSinglePostHtml(post) {
 
     // Conditionally create the "Bid" button based on whether the current user is the author
     if (!isAuthor) {
+        const bidForm = document.createElement('form');
+        bidForm.id = "bidForm";
+
+        // Create a label for the number input
+        const label = document.createElement('label');
+        label.setAttribute('for', 'bidAmount');
+        label.textContent = 'Bid amount (1-100):';
+
+        // Create the number input form
+        const numberInput = document.createElement('input');
+        numberInput.type = 'number';
+        numberInput.id = 'bidAmount';
+        numberInput.name = 'bidAmount';
+        numberInput.setAttribute('min', '1');
+        numberInput.setAttribute('max', '100');
+        numberInput.classList.add('form-control');
+
         const viewButton = document.createElement('button');
         viewButton.textContent = "Bid";
         viewButton.id = "bidButton";
         viewButton.classList.add('btn', 'btn-lg', 'bg-info', 'mt-5', 'px-5', 'text-white', 'w-50', 'mx-auto');
-        cardTwo.appendChild(viewButton);
+
+        bidForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            let bidAmount = numberInput.value.trim();
+            bidAmount = parseFloat(bidAmount);
+
+            if (isNaN(bidAmount) || bidAmount < 1 || bidAmount > 100) {
+                alert('Bid amount must be a number between 1 and 100.');
+                return; // Prevent further execution of the function
+            }
+            console.log('Bid amount:', bidAmount);
+
+            await bidOnListing(bidAmount);
+            window.location.reload();
+        });
+
+
+        bidForm.append(label, numberInput, viewButton);
+        cardTwo.appendChild(bidForm);
     }
 
     bidInfo.append(bidCount, deadline);
