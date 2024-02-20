@@ -1,4 +1,9 @@
+import { ifAuthor } from "./checkAuthor.js";
+const { isAuthor } = await ifAuthor();
+
+
 function generateSinglePostHtml(post) {
+
     const { title, description, media, endsAt, _count } = post;
     const { bids } = _count;
 
@@ -47,9 +52,14 @@ function generateSinglePostHtml(post) {
     const text = document.createElement('p');
     text.textContent = description;
 
-    const viewButton = document.createElement('button');
-    viewButton.textContent = "Bid";
-    viewButton.classList.add('btn', 'btn-lg', 'bg-info', 'mt-5', 'px-5', 'text-white', 'w-50', 'mx-auto');
+    // Conditionally create the "Bid" button based on whether the current user is the author
+    if (!isAuthor) {
+        const viewButton = document.createElement('button');
+        viewButton.textContent = "Bid";
+        viewButton.id = "bidButton";
+        viewButton.classList.add('btn', 'btn-lg', 'bg-info', 'mt-5', 'px-5', 'text-white', 'w-50', 'mx-auto');
+        cardTwo.appendChild(viewButton);
+    }
 
     bidInfo.append(bidCount, deadline);
 
@@ -57,7 +67,7 @@ function generateSinglePostHtml(post) {
 
     cardOne.append(image, listingInfo);
 
-    cardTwo.append(bidInfo, viewButton);
+    cardTwo.append(bidInfo);
 
     postWrapper.append(cardOne, line, cardTwo);
 
