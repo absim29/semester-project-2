@@ -5,6 +5,8 @@ import { displayListings } from "./utils/allListings.js";
 import { filerPostHandler } from "./utils/searchUtil.js"
 
 let listings = [];
+let offset = 0;
+const limit = 100;
 
 const searchInput = document.querySelector('#searchInput');
 
@@ -12,27 +14,24 @@ searchInput.addEventListener('input', () => {
     displayListings(listings, filerPostHandler);
 });
 
-// searchInput.addEventListener('input', () => {
-//     const searchTerm = searchInput.value.trim();
-//     displayListings(listings, (post) => filerPostHandler(post, searchTerm));
-// });
+async function loadMoreListings() {
+    offset += limit;
+    const newlistings = await fetchData(`${LISTINGS_API_URL}?sort=created&limit=${limit}&offset=${offset}`, { method: 'GET' }, true);
+    listings = listings.concat(newlistings);
+    displayListings(listings, filerPostHandler);
+}
 
 async function main() {
     const isLoggedIn = checkUserLogin();
 
     if (isLoggedIn) {
-        listings = await fetchData(LISTINGS_API_URL, { method: 'GET' }, true);
+        listings = await fetchData(`${LISTINGS_API_URL}?sort=created&limit=${limit}&offset=${offset}`, { method: 'GET' }, true);
         displayListings(listings, filerPostHandler);
     } else {
         console.log('Not logged in');
     }
-
-    // try {
-    //     listings = await fetchData(LISTINGS_API_URL, { method: 'GET' }, true);
-    //     displayListings(listings, filerPostHandler);
-    // } catch (error) {
-    //     console.error('Error fetching listings:', error);
-    // }
-
 }
 main();
+
+const loadMoreButton = document.querySelector('#loadMoreButton');
+loadMoreButton.addEventListener('click', loadMoreListings);
