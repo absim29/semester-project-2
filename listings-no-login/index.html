@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse our listings" />
+    <link rel="icon" type="image/x-icon" href="/images/logo-nobackground.png" />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script type="module" src="/scripts/listingsPageNoReg.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/40355c2075.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>BidBay | Listings</title>
+  </head>
+  <body class="bg-success">
+    <header class="bg-info fixed-top">
+      <div class="d-flex justify-content-between px-1 py-1">
+        <nav class="navbar navbar-expand-lg" role="navigation">
+          <div class="container-fluid">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <ul class="navbar-nav">
+                <a
+                  href=""
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                  >Login
+                </a>
+                <a
+                  href=""
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#registrationModal"
+                  >Register
+                </a>
+                <a class="nav-link active" href="#">Listings</a>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <form class="form-inline mt-2 mt-md-0 d-flex align-items-center">
+          <input
+            class="form-control mr-sm-2"
+            type="text"
+            placeholder="Search"
+            aria-label="Search"
+            id="searchInput"
+          />
+          <label for="searchInput"></label>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <div class="col d-flex justify-content-center mt-5">
+        <a href="/"
+          ><img
+            class="mt-5"
+            src="/images/logo-nobackground.png"
+            alt="logo"
+            width="150"
+            height="150"
+        /></a>
+      </div>
+
+      <div class="container">
+        <div
+          class="row d-flex justify-content-center mt-4"
+          id="listing-display"
+        >
+          <div class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <button
+          class="btn btn-lg bg-info px-5 text-white d-flex m-auto mb-2"
+          id="loadMoreButton"
+        >
+          Load more
+        </button>
+      </div>
+
+      <!-- Register modal -->
+      <div
+        class="modal fade"
+        id="registrationModal"
+        tabindex="-1"
+        aria-labelledby="registrationModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title text-center w-100"
+                id="registrationModalLabel"
+              >
+                Registration
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="registrationForm">
+                <div class="mb-3">
+                  <label for="reg-name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="reg-name"
+                    id="reg-name"
+                    required
+                    placeholder="Username"
+                    pattern="[A-Za-z0-9_]+"
+                    title="Name must not contain punctuation symbols apart from underscore (_)"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="reg-email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="reg-email"
+                    id="reg-email"
+                    aria-describedby="email"
+                    required
+                    placeholder="Please use a Noroff email"
+                    pattern="^[\w\-.]+@(stud.)?noroff.no$"
+                    title="The email value must be a valid stud.noroff.no email address."
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="reg-password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="reg-password"
+                    id="reg-password"
+                    required
+                    placeholder="Miminum 8 characters"
+                    minlength="8"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="avatar" class="form-label">Avatar</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="avatar"
+                    placeholder="Optional"
+                  />
+                </div>
+                <div class="text-danger text-center" id="error"></div>
+                <button
+                  class="btn btn-lg bg-info px-5 text-white d-flex"
+                  type="submit"
+                  id="reg-btn"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Register modal -->
+
+      <!-- Login modal -->
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title text-center w-100"
+                id="registrationModalLabel"
+              >
+                Login
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="login-email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    name="login-email"
+                    class="form-control"
+                    id="login-email"
+                    aria-describedby="emai"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="login-password" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    name="login-password"
+                    class="form-control"
+                    id="login-password"
+                    required
+                  />
+                </div>
+
+                <button
+                  class="btn btn-lg bg-info px-5 text-white d-flex"
+                  type="submit"
+                  id="login-btn"
+                >
+                  Login
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Login modal -->
+    </main>
+    <!-- Footer -->
+    <footer class="footer bg-info text-center py-2">
+      <div class="p-2 d-flex justify-content-center gap-4">
+        <a href="https://www.instagram.com/" aria-label="instagram">
+          <i
+            class="fa-brands fa-square-instagram fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://twitter.com/" aria-label="twitter">
+          <i
+            class="fa-brands fa-square-x-twitter fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://www.facebook.com/" aria-label="facebook">
+          <i
+            class="fa-brands fa-square-facebook fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://www.threads.net/" aria-label="threads">
+          <i
+            class="fa-brands fa-square-threads fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+      </div>
+      Copyright &copy; 2024 BidBay Online Auction
+    </footer>
+  </body>
+</html>
