@@ -1,6 +1,8 @@
 import { ifAuthor } from "./checkAuthor.js";
 import { bidOnListing } from "../bid.js";
+import { checkUserLogin } from "./checkUserLogin.js";
 const { isAuthor } = await ifAuthor();
+const { isLoggedIn } = await checkUserLogin();
 
 function generateSinglePostHtml(post) {
 
@@ -53,7 +55,7 @@ function generateSinglePostHtml(post) {
     text.textContent = description;
 
     // Conditionally create the "Bid" button based on whether the current user is the author
-    if (!isAuthor) {
+    if (isLoggedIn && !isAuthor) {
         const bidForm = document.createElement('form');
         bidForm.id = "bidForm";
 
