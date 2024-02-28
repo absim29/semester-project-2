@@ -47,7 +47,9 @@ footer a {
 }
 
 .single-img {
-    max-height: 300px;
+    width: 500px;
+    min-height: 350px;
+    max-height: 350px;
     object-fit: cover;
 }
 
