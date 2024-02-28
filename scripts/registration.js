@@ -30,4 +30,5 @@ regForm.addEventListener('submit', (event) => {
         // avatar: avatar.value,
     };
     registerUser(userRegistrationDetails);
+    window.location.href = '/profile';
 });

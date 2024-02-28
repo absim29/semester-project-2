@@ -32,4 +32,5 @@ form.addEventListener('submit', async (event) => {
     };
     await loginUser(userLoginDetails);
     displayListings();
+    window.location.href = '/profile';
 })
