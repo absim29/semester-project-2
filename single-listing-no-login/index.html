@@ -6,7 +6,7 @@
     <meta name="description" content="Browse our listings" />
     <link rel="icon" type="image/x-icon" href="/images/logo-nobackground.png" />
     <link rel="stylesheet" href="/dist/css/index.css" />
-    <script type="module" src="/scripts/listingsPageNoReg.js"></script>
+    <script type="module" src="/scripts/singleListingPageNoReg.js"></script>
     <script type="module" src="/scripts/registration.js"></script>
     <script type="module" src="/scripts/login.js"></script>
     <script
@@ -55,7 +55,9 @@
                   data-bs-target="#registrationModal"
                   >Register
                 </a>
-                <a class="nav-link active" href="#">Listings</a>
+                <a class="nav-link active" href="/listings-no-login/"
+                  >Listings</a
+                >
               </ul>
             </div>
           </div>
@@ -79,18 +81,19 @@
 
     <main>
       <div class="col d-flex justify-content-center mt-5">
-        <img
-          class="mt-5"
-          src="/images/logo-nobackground.png"
-          alt="logo"
-          width="150"
-          height="150"
-        />
+        <a href="/"
+          ><img
+            class="mt-5"
+            src="/images/logo-nobackground.png"
+            alt="logo"
+            width="150"
+            height="150"
+        /></a>
       </div>
 
       <div class="container">
         <div
-          class="row d-flex justify-content-center mt-4"
+          class="row d-flex justify-content-center my-4"
           id="listing-display"
         >
           <div class="text-center">
@@ -99,14 +102,7 @@
             </div>
           </div>
         </div>
-        <button
-          class="btn btn-lg bg-info px-5 text-white d-flex m-auto mb-2"
-          id="loadMoreButton"
-        >
-          Load more
-        </button>
       </div>
-
       <!-- Register modal -->
       <div
         class="modal fade"
