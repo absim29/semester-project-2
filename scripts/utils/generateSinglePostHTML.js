@@ -2,7 +2,7 @@ import { ifAuthor } from "./checkAuthor.js";
 import { bidOnListing } from "../bid.js";
 import { checkUserLogin } from "./checkUserLogin.js";
 const { isAuthor } = await ifAuthor();
-const { isLoggedIn } = await checkUserLogin();
+const isLoggedIn = checkUserLogin();
 
 function generateSinglePostHtml(post) {
 
@@ -40,7 +40,21 @@ function generateSinglePostHtml(post) {
 
     const deadline = document.createElement('p');
     deadline.classList.add('h5');
-    deadline.textContent = `Ends At: ${endsAt}`;
+
+    // Parse the date string and create a Date object
+    const endDate = new Date(endsAt);
+
+    // Format the date string in a user-friendly format
+    const formattedEndDate = endDate.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+    });
+
+    // Set the text content of the deadline paragraph element
+    deadline.textContent = `Ends At: ${formattedEndDate}`;
 
     const cardTwo = document.createElement('div');
     cardTwo.classList.add('col', 'd-flex', 'gap-3');
@@ -76,7 +90,7 @@ function generateSinglePostHtml(post) {
         const viewButton = document.createElement('button');
         viewButton.textContent = "Bid";
         viewButton.id = "bidButton";
-        viewButton.classList.add('btn', 'btn-lg', 'bg-info', 'mt-5', 'px-5', 'text-white', 'w-50', 'mx-auto');
+        viewButton.classList.add('btn', 'btn-lg', 'bg-info', 'mt-5', 'px-5', 'text-white', 'w-80', 'mx-auto', 'd-flex');
 
         bidForm.addEventListener('submit', async (event) => {
             event.preventDefault();

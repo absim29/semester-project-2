@@ -1,3 +1,6 @@
+import { checkUserLogin } from "./checkUserLogin.js";
+const isLoggedIn = checkUserLogin();
+
 function generatePostHtml(post) {
     const { title, description, media, endsAt, _count } = post;
     const { bids } = _count;
@@ -31,7 +34,20 @@ function generatePostHtml(post) {
     bidCount.textContent = `Number of Bids: ${bids}`;
 
     const deadline = document.createElement('p');
-    deadline.textContent = `Ends At: ${endsAt}`;
+    // Parse the date string and create a Date object
+    const endDate = new Date(endsAt);
+
+    // Format the date string in a user-friendly format
+    const formattedEndDate = endDate.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+    });
+
+    // Set the text content of the deadline paragraph element
+    deadline.textContent = `Ends At: ${formattedEndDate}`;
 
     const cardRight = document.createElement('div');
     cardRight.classList.add('col', 'd-flex', 'flex-column', 'justify-content-between');
@@ -43,9 +59,19 @@ function generatePostHtml(post) {
     const viewButton = document.createElement('button');
     viewButton.textContent = "View";
     viewButton.classList.add('btn', 'btn-lg', 'bg-warning', 'mt-5', 'px-5', 'text-white', 'w-75', 'mx-auto');
-    viewButton.addEventListener('click', () => {
-        window.location.href = `/single-listing/?id=${post.id}`;
-    });
+
+    if (isLoggedIn) {
+        viewButton.addEventListener('click', () => {
+            // Redirect to the single-listing page with login
+            window.location.href = `../../single-listing/?id=${post.id}`;
+        });
+    } else {
+        viewButton.addEventListener('click', () => {
+            // Redirect to the single-listing-no-login page
+            window.location.href = `../../single-listing-no-login/?id=${post.id}`;
+        });
+    }
+
 
 
 
