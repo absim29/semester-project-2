@@ -7,6 +7,7 @@ function generatePostHtml(post) {
 
     const postWrapper = document.createElement('div');
     postWrapper.classList.add('col-xs', 'col-md-5', 'col-lg-3', 'col-xl-3', 'mb-5', 'mx-1', 'overflow-hidden', 'd-flex', 'flex-column', 'card', 'py-2', 'shadow-sm', 'text-center');
+    postWrapper.style.maxHeight = '700px';
 
     const cardLeft = document.createElement('div');
     cardLeft.classList.add('col');
@@ -30,8 +31,11 @@ function generatePostHtml(post) {
 
     const bidInfo = document.createElement('div');
 
-    const bidCount = document.createElement('p');
-    bidCount.textContent = `Number of Bids: ${bids}`;
+    if (isLoggedIn) {
+        const bidCount = document.createElement('p');
+        bidCount.textContent = `Number of Bids: ${bids}`;
+        bidInfo.appendChild(bidCount);
+    }
 
     const deadline = document.createElement('p');
     // Parse the date string and create a Date object
@@ -51,10 +55,11 @@ function generatePostHtml(post) {
 
     const cardRight = document.createElement('div');
     cardRight.classList.add('col', 'd-flex', 'flex-column', 'justify-content-between');
-
+    cardRight.style.overflow = 'hidden';
 
     const text = document.createElement('p');
     text.textContent = description;
+    text.style.overflow = 'scroll';
 
     const viewButton = document.createElement('button');
     viewButton.textContent = "View";
@@ -75,7 +80,7 @@ function generatePostHtml(post) {
 
 
 
-    bidInfo.append(bidCount, deadline);
+    bidInfo.append(deadline);
 
     cardLeft.append(image, titleElement, bidInfo);
 
