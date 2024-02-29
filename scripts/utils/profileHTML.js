@@ -1,5 +1,6 @@
+
 function userProfileHTML(profileData) {
-    const { name, email, avatar, credits, _count } = profileData;
+    const { name, email, avatar, credits, wins, _count } = profileData;
     const { listings } = _count;
 
     const postWrapper = document.createElement('div');
@@ -37,6 +38,25 @@ function userProfileHTML(profileData) {
     creditCount.classList.add('h5');
     creditCount.textContent = `Credits: ${credits}`;
 
+    const winElement = document.createElement('p');
+    winElement.classList.add('h5');
+    winElement.textContent = `Wins: ${wins.length}`;
+    // If there are wins, create a list to display the IDs
+    if (wins.length > 0) {
+        const winList = document.createElement('ul');
+        wins.forEach(win => {
+            const listItem = document.createElement('li');
+            listItem.textContent = win;
+            winList.appendChild(listItem);
+        });
+        winElement.appendChild(winList);
+    } else {
+        // If there are no wins, display a message
+        const noWinsMessage = document.createElement('p');
+        noWinsMessage.textContent = "No wins yet.";
+        winElement.appendChild(noWinsMessage);
+    }
+
     const cardTwo = document.createElement('div');
     cardTwo.classList.add('col', 'd-flex', 'align-items-center', 'mb-2', 'w-75');
 
@@ -54,17 +74,14 @@ function userProfileHTML(profileData) {
     listingsContainer.classList.add('col', 'd-flex', 'flex-row', 'flex-wrap', 'justify-content-center');
     listingsContainer.id = 'listingsContainer';
 
-    const addPostButton = document.createElement('button');
-    addPostButton.textContent = "New Listing";
-    addPostButton.classList.add('btn', 'btn-lg', 'bg-warning', 'text-white', 'w-50', 'mx-auto');
 
     listingInfo.append(creditCount);
 
-    profileInfo.append(nameElement, emailElement, creditCount);
+    profileInfo.append(nameElement, emailElement, creditCount, winElement);
 
     cardOne.append(profilePic, profileInfo);
 
-    cardTwo.append(listingsCount, addPostButton);
+    cardTwo.append(listingsCount);
 
     postWrapper.append(cardOne, line, cardTwo, listingsContainer);
 
