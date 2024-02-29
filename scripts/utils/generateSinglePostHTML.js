@@ -33,10 +33,14 @@ function generateSinglePostHtml(post) {
     titleElement.textContent = title;
 
     const bidInfo = document.createElement('div');
+    bidInfo.id = "bidInfo";
 
-    const bidCount = document.createElement('p');
-    bidCount.classList.add('h5');
-    bidCount.textContent = `Number of Bids: ${bids}`;
+    if (isLoggedIn) {
+        const bidCount = document.createElement('p');
+        bidCount.classList.add('h5');
+        bidCount.textContent = `Number of Bids: ${bids}`;
+        bidInfo.appendChild(bidCount);
+    }
 
     const deadline = document.createElement('p');
     deadline.classList.add('h5');
@@ -60,7 +64,7 @@ function generateSinglePostHtml(post) {
     cardTwo.classList.add('col', 'd-flex', 'gap-3');
 
     const listingInfo = document.createElement('div');
-    listingInfo.classList.add('col', 'single-text', 'd-flex', 'flex-column', 'align-self-center');
+    listingInfo.classList.add('col', 'single-text', 'd-flex', 'flex-column', 'align-items-start');
 
     const line = document.createElement('hr');
     line.classList.add('hr', 'hr-blurry');
@@ -114,17 +118,18 @@ function generateSinglePostHtml(post) {
         const sellerElement = document.createElement('p');
         sellerElement.classList.add('h5');
         const sellerAnchor = document.createElement('a');
+        sellerAnchor.classList.add('text-warning');
 
         sellerAnchor.href = `../../seller-page/?name=${seller.name}`;
         sellerAnchor.textContent = seller.name;
         sellerElement.textContent = `Seller: `;
         sellerElement.appendChild(sellerAnchor);
-        text.appendChild(sellerElement);
+        bidInfo.appendChild(sellerElement);
 
 
     }
 
-    bidInfo.append(bidCount, deadline);
+    bidInfo.append(deadline);
 
     listingInfo.append(titleElement, text);
 
