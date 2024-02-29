@@ -1,3 +1,4 @@
+import { getSinglePost } from "./singleListing.js";
 
 function userProfileHTML(profileData) {
     const { name, email, avatar, credits, wins, _count } = profileData;
@@ -11,6 +12,7 @@ function userProfileHTML(profileData) {
 
     const profilePic = document.createElement('img');
     profilePic.classList.add('single-img', 'img-fluid', 'pe-auto');
+    profilePic.id = "profile-pic";
     profilePic.addEventListener('error', function () {
         // Set src attribute to fallback image path if the original image fails to load
         profilePic.src = '../../images/logo.png';
@@ -41,16 +43,27 @@ function userProfileHTML(profileData) {
     const winElement = document.createElement('p');
     winElement.classList.add('h5');
     winElement.textContent = `Wins: ${wins.length}`;
-    // If there are wins, create a list to display the IDs
+
+    // If there are wins, create a list to display the names
     if (wins.length > 0) {
         const winList = document.createElement('ul');
-        wins.forEach(win => {
+        wins.forEach(async (win) => {
+            const post = await getSinglePost(win);
+            const postName = post.title;
+            console.log(post)
             const listItem = document.createElement('li');
-            listItem.textContent = win;
+
+            const link = document.createElement('a');
+            link.classList.add('text-warning');
+            link.style.textDecoration = 'none';
+            link.textContent = postName;
+            link.href = `../../single-listing/?id=${win}`;
+            listItem.appendChild(link);
             winList.appendChild(listItem);
         });
         winElement.appendChild(winList);
-    } else {
+    }
+    else {
         // If there are no wins, display a message
         const noWinsMessage = document.createElement('p');
         noWinsMessage.textContent = "No wins yet.";
