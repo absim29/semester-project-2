@@ -120,13 +120,18 @@
                   <label for="edit-post-description" class="form-label"
                     >Description</label
                   >
-                  <input
+                  <textarea
                     type="text"
                     class="form-control"
                     name="edit-post-description"
                     id="edit-post-description"
                     placeholder="Describe your item"
-                  />
+                    maxlength="280"
+                    rows="5"
+                  /></textarea>
+                  <div id="char-count" class="text-muted">
+                    Characters remaining: 280
+                  </div>
                 </div>
                 <div class="mb-3">
                   <label for="edit-post-tags" class="form-label">Tags</label>
