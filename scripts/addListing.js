@@ -31,6 +31,18 @@ async function addNewPost() {
     console.log(response);
 }
 
+// Get the input field
+var descriptionInput = document.getElementById("post-description");
+
+// Get the character count element
+var charCount = document.getElementById("char-count");
+
+// Add an event listener to the input field to track changes
+descriptionInput.addEventListener("input", function () {
+    var remainingChars = 280 - descriptionInput.value.length; // Calculate remaining characters
+    charCount.textContent = "Characters remaining: " + remainingChars; // Update character count display
+});
+
 newPost.addEventListener('submit', async (event) => {
     event.preventDefault();
 

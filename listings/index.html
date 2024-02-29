@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/dist/css/index.css" />
     <script type="module" src="/scripts/listingsPage.js"></script>
     <script type="module" src="/scripts/utils/logout.js"></script>
+    <script type="module" src="/scripts/addListing.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
       defer
@@ -43,7 +44,13 @@
                 <a href="/" class="nav-link" id="logout-button">Logout </a>
                 <a href="/profile/" class="nav-link">Profile </a>
                 <a class="nav-link active" href="#">Listings</a>
-                <a class="nav-link" href="/new-listing/">New Listing</a>
+                <a
+                  href=""
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#newPostModal"
+                  >New Listing
+                </a>
               </ul>
             </div>
           </div>
@@ -96,22 +103,19 @@
         </button>
       </div>
 
-      <!-- Register modal -->
+      <!-- New listing modal -->
       <div
         class="modal fade"
-        id="registrationModal"
+        id="newPostModal"
         tabindex="-1"
-        aria-labelledby="registrationModalLabel"
+        aria-labelledby="newPostModalLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5
-                class="modal-title text-center w-100"
-                id="registrationModalLabel"
-              >
-                Registration
+              <h5 class="modal-title text-center w-100" id="newPostModalLabel">
+                Create a new listing
               </h5>
               <button
                 type="button"
@@ -121,61 +125,70 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form id="registrationForm">
+              <form id="newPostForm">
                 <div class="mb-3">
-                  <label for="reg-name" class="form-label">Name</label>
+                  <label for="post-title" class="form-label">Title</label>
                   <input
                     type="text"
                     class="form-control"
-                    name="reg-name"
-                    id="reg-name"
+                    name="post-title"
+                    id="post-title"
                     required
-                    placeholder="Username"
-                    pattern="[A-Za-z0-9_]+"
-                    title="Name must not contain punctuation symbols apart from underscore (_)"
+                    placeholder="Item title"
                   />
                 </div>
-
                 <div class="mb-3">
-                  <label for="reg-email" class="form-label">Email</label>
-                  <input
-                    type="email"
+                  <label for="post-description" class="form-label"
+                    >Description</label
+                  >
+                  <textarea
                     class="form-control"
-                    name="reg-email"
-                    id="reg-email"
-                    aria-describedby="email"
-                    required
-                    placeholder="Please use a Noroff email"
-                    pattern="^[\w\-.]+@(stud.)?noroff.no$"
-                    title="The email value must be a valid stud.noroff.no email address."
-                  />
+                    name="post-description"
+                    id="post-description"
+                    placeholder="Describe your item"
+                    maxlength="280"
+                    rows="5"
+                  ></textarea>
+                  <div id="char-count" class="text-muted">
+                    Characters remaining: 280
+                  </div>
                 </div>
                 <div class="mb-3">
-                  <label for="reg-password" class="form-label">Password</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    name="reg-password"
-                    id="reg-password"
-                    required
-                    placeholder="Miminum 8 characters"
-                    minlength="8"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="avatar" class="form-label">Avatar</label>
+                  <label for="post-tags" class="form-label">Tags</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="avatar"
+                    name="post-tags"
+                    id="post-tags"
+                    placeholder="Add tags"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="post-media" class="form-label">Media</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    name="post-media"
+                    id="post-media"
+                    placeholder="Paste your image URL"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="deadline" class="form-label">Deadline</label>
+                  <input
+                    type="datetime-local"
+                    class="form-control"
+                    name="deadline"
+                    id="deadline"
+                    required
                     placeholder="Optional"
                   />
                 </div>
-                <div class="text-danger text-center" id="error"></div>
+                <div class="text-danger text-center" id="post-error"></div>
                 <button
                   class="btn btn-lg bg-info px-5 text-white d-flex"
                   type="submit"
-                  id="reg-btn"
+                  id="submit-btn"
                 >
                   Submit
                 </button>
@@ -184,71 +197,7 @@
           </div>
         </div>
       </div>
-      <!-- Register modal -->
-
-      <!-- Login modal -->
-      <div
-        class="modal fade"
-        id="loginModal"
-        tabindex="-1"
-        aria-labelledby="loginModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5
-                class="modal-title text-center w-100"
-                id="registrationModalLabel"
-              >
-                Login
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <form id="loginForm">
-                <div class="mb-3">
-                  <label for="login-email" class="form-label">Email</label>
-                  <input
-                    type="email"
-                    name="login-email"
-                    class="form-control"
-                    id="login-email"
-                    aria-describedby="emai"
-                    required
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="login-password" class="form-label"
-                    >Password</label
-                  >
-                  <input
-                    type="password"
-                    name="login-password"
-                    class="form-control"
-                    id="login-password"
-                    required
-                  />
-                </div>
-
-                <button
-                  class="btn btn-lg bg-info px-5 text-white d-flex"
-                  type="submit"
-                  id="login-btn"
-                >
-                  Login
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Login modal -->
+      <!-- New listing modal -->
     </main>
     <!-- Footer -->
     <footer class="footer bg-info text-center py-2">
