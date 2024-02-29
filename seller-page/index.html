@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="My Profile" />
+    <link rel="icon" type="image/x-icon" href="/images/logo-nobackground.png" />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <script type="module" src="/scripts/sellerProfilePage.js"></script>
+    <script type="module" src="/scripts/utils/logout.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/40355c2075.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>BidBay | Profile</title>
+  </head>
+  <body class="bg-success">
+    <header class="bg-info fixed-top">
+      <div class="d-flex justify-content-between px-1 py-1">
+        <nav class="navbar navbar-expand-lg" role="navigation">
+          <div class="container-fluid">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <ul class="navbar-nav">
+                <a href="/" class="nav-link" id="logout-button">Logout </a>
+                <a href="/profile/" class="nav-link">Profile </a>
+                <a class="nav-link" href="/listings/">Listings</a>
+                <a class="nav-link" href="/new-listing/">New Listing</a>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="col d-flex justify-content-center mt-5">
+        <a href="/"
+          ><img
+            class="mt-5"
+            src="/images/logo-nobackground.png"
+            alt="logo"
+            width="150"
+            height="150"
+        /></a>
+      </div>
+
+      <div class="container">
+        <div
+          class="row d-flex justify-content-center my-4"
+          id="profileContainer"
+        >
+          <div class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Change avatar modal -->
+      <div
+        class="modal fade"
+        id="avatarModal"
+        tabindex="-1"
+        aria-labelledby="avatarModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center w-100" id="avatarModalLabel">
+                Change avatar
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="avatarForm">
+                <div class="mb-3">
+                  <label for="avatar" class="form-label">Avatar</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="avatar"
+                    placeholder="Enter your URL here"
+                  />
+                </div>
+                <div class="text-danger text-center" id="avatar-error"></div>
+                <button
+                  class="btn btn-lg bg-info px-5 text-white d-flex"
+                  type="submit"
+                  id="avatar-btn"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Change avatar modal -->
+    </main>
+    <!-- Footer -->
+    <footer class="footer bg-info text-center py-2">
+      <div class="p-2 d-flex justify-content-center gap-4">
+        <a href="https://www.instagram.com/" aria-label="instagram">
+          <i
+            class="fa-brands fa-square-instagram fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://twitter.com/" aria-label="twitter">
+          <i
+            class="fa-brands fa-square-x-twitter fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://www.facebook.com/" aria-label="facebook">
+          <i
+            class="fa-brands fa-square-facebook fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+        <a href="https://www.threads.net/" aria-label="threads">
+          <i
+            class="fa-brands fa-square-threads fa-2xl"
+            style="color: #000000"
+          ></i>
+        </a>
+      </div>
+      Copyright &copy; 2024 BidBay Online Auction
+    </footer>
+  </body>
+</html>
