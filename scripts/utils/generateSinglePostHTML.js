@@ -6,7 +6,7 @@ const isLoggedIn = checkUserLogin();
 
 function generateSinglePostHtml(post) {
 
-    const { title, description, media, endsAt, _count } = post;
+    const { title, description, media, endsAt, _count, seller } = post;
     const { bids } = _count;
 
     const postWrapper = document.createElement('div');
@@ -110,6 +110,18 @@ function generateSinglePostHtml(post) {
 
         bidForm.append(label, numberInput, viewButton);
         cardTwo.appendChild(bidForm);
+
+        const sellerElement = document.createElement('p');
+        sellerElement.classList.add('h5');
+        const sellerAnchor = document.createElement('a');
+
+        sellerAnchor.href = `../../seller-page/?name=${seller.name}`;
+        sellerAnchor.textContent = seller.name;
+        sellerElement.textContent = `Seller: `;
+        sellerElement.appendChild(sellerAnchor);
+        text.appendChild(sellerElement);
+
+
     }
 
     bidInfo.append(bidCount, deadline);
