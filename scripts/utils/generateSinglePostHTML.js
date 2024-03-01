@@ -132,7 +132,7 @@ function generateSinglePostHtml(post) {
         const sellerAnchor = document.createElement('a');
         sellerAnchor.classList.add('text-warning');
         sellerAnchor.style.textDecoration = 'none';
-        sellerAnchor.href = `../../ seller - page /? name = ${seller.name} `;
+        sellerAnchor.href = `../../seller-page/?name=${seller.name} `;
         sellerAnchor.textContent = seller.name;
         sellerElement.textContent = `Seller: `;
         sellerElement.appendChild(sellerAnchor);
