@@ -4,6 +4,7 @@ import { checkUserLogin } from "./checkUserLogin.js";
 const { isAuthor } = await ifAuthor();
 const isLoggedIn = checkUserLogin();
 
+
 function generateSinglePostHtml(post) {
 
     const { title, description, media, endsAt, _count, seller } = post;
@@ -39,6 +40,7 @@ function generateSinglePostHtml(post) {
         const bidCount = document.createElement('p');
         bidCount.classList.add('h5');
         bidCount.textContent = `Number of Bids: ${bids}`;
+
         bidInfo.appendChild(bidCount);
     }
 
@@ -58,7 +60,7 @@ function generateSinglePostHtml(post) {
     });
 
     // Set the text content of the deadline paragraph element
-    deadline.textContent = `Ends At: ${formattedEndDate}`;
+    deadline.textContent = `Ends At: ${formattedEndDate} `;
 
     const cardTwo = document.createElement('div');
     cardTwo.classList.add('col', 'd-flex', 'gap-3');
@@ -108,19 +110,29 @@ function generateSinglePostHtml(post) {
             console.log('Bid amount:', bidAmount);
 
             await bidOnListing(bidAmount);
-            window.location.reload();
+            // window.location.reload();
         });
-
 
         bidForm.append(label, numberInput, viewButton);
         cardTwo.appendChild(bidForm);
+
+        const currentDate = new Date();
+
+        // Compare the end date with the current date
+        if (endDate < currentDate) {
+            const ended = document.createElement('h4');
+            ended.classList.add('text-warning');
+            ended.textContent = 'This auction has ended';
+            cardTwo.replaceChild(ended, bidForm)
+
+        }
 
         const sellerElement = document.createElement('p');
         sellerElement.classList.add('h5');
         const sellerAnchor = document.createElement('a');
         sellerAnchor.classList.add('text-warning');
         sellerAnchor.style.textDecoration = 'none';
-        sellerAnchor.href = `../../seller-page/?name=${seller.name}`;
+        sellerAnchor.href = `../../ seller - page /? name = ${seller.name} `;
         sellerAnchor.textContent = seller.name;
         sellerElement.textContent = `Seller: `;
         sellerElement.appendChild(sellerAnchor);
