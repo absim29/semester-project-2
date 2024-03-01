@@ -19,9 +19,11 @@ async function bidOnListing(bidAmount) {
             }),
         }, true)
         console.log(response);
+        window.location.reload();
     }
     catch (error) {
         console.error('Error creating bid:', error.message);
+        document.querySelector('#error-div').innerHTML = '<div class="reg-error pb-2">Your bid must be higher than the current bid.</div>';
     }
 }
 
