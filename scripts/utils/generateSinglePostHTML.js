@@ -36,6 +36,12 @@ function generateSinglePostHtml(post) {
     const bidInfo = document.createElement('div');
     bidInfo.id = "bidInfo";
 
+
+    const errorDiv = document.createElement('div');
+    errorDiv.classList.add('text-danger', 'text-center');
+    errorDiv.id = 'error-div';
+
+
     if (isLoggedIn) {
         const bidCount = document.createElement('p');
         bidCount.classList.add('h5');
@@ -59,7 +65,7 @@ function generateSinglePostHtml(post) {
         minute: 'numeric',
     });
 
-    // Set the text content of the deadline paragraph element
+
     deadline.textContent = `Ends At: ${formattedEndDate} `;
 
     const cardTwo = document.createElement('div');
@@ -79,12 +85,12 @@ function generateSinglePostHtml(post) {
         const bidForm = document.createElement('form');
         bidForm.id = "bidForm";
 
-        // Create a label for the number input
+
         const label = document.createElement('label');
         label.setAttribute('for', 'bidAmount');
         label.textContent = 'Bid amount (1-100):';
 
-        // Create the number input form
+
         const numberInput = document.createElement('input');
         numberInput.type = 'number';
         numberInput.id = 'bidAmount';
@@ -105,12 +111,12 @@ function generateSinglePostHtml(post) {
 
             if (isNaN(bidAmount) || bidAmount < 1 || bidAmount > 100) {
                 alert('Bid amount must be a number between 1 and 100.');
-                return; // Prevent further execution of the function
+                return;
             }
             console.log('Bid amount:', bidAmount);
 
             await bidOnListing(bidAmount);
-            // window.location.reload();
+
         });
 
         bidForm.append(label, numberInput, viewButton);
@@ -138,10 +144,9 @@ function generateSinglePostHtml(post) {
         sellerElement.appendChild(sellerAnchor);
         bidInfo.appendChild(sellerElement);
 
-
     }
 
-    bidInfo.append(deadline);
+    bidInfo.append(deadline, errorDiv);
 
     listingInfo.append(titleElement, text);
 
