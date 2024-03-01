@@ -3,9 +3,12 @@ import { generateSinglePostHtml } from "./utils/generateSinglePostHTML.js";
 import { ifAuthor } from "./utils/checkAuthor.js";
 import { deletePost } from "./deleteListing.js";
 import { editPost } from "./editListing.js";
+import { bidAmounts } from "./utils/bidAmounts.js";
+
 
 const listingContainer = document.querySelector('#listing-display');
 const postForm = document.querySelector('#editPostForm');
+
 
 async function displaySinglePost(post) {
     listingContainer.textContent = '';
@@ -49,6 +52,28 @@ async function displaySinglePost(post) {
         extraButtons.append(editButton, deleteButton);
         currentPost.appendChild(extraButtons);
     }
+
+    const bids = await bidAmounts();
+    if (bids) {
+        // Create a list element to display bid amounts
+        const current = document.createElement('p');
+        current.textContent = 'Current bids';
+
+        const bidList = document.createElement('ul');
+        bidList.classList.add('bid-amounts', 'h5');
+        bidList.appendChild(current);
+
+        // Iterate over the bid amounts and create list items
+        bids.forEach(bid => {
+            const bidItem = document.createElement('li');
+            bidItem.classList.add('list-group-item');
+            bidItem.textContent = `Bid Amount: ${bid.amount}`;
+            bidList.appendChild(bidItem);
+        });
+
+        currentPost.appendChild(bidList);
+    }
+
 
     listingContainer.appendChild(currentPost);
 }
