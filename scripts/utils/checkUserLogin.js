@@ -1,4 +1,5 @@
 function checkUserLogin() {
+
     const token = localStorage.getItem('accessToken');
     if (token) {
         return true;
@@ -6,4 +7,5 @@ function checkUserLogin() {
         return false;
     }
 }
+
 export { checkUserLogin };

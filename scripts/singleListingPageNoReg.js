@@ -8,7 +8,6 @@ const listingContainer = document.querySelector('#listing-display');
 async function displaySinglePost() {
     listingContainer.textContent = '';
 
-    // Fetch the result from ifAuthor asynchronously
     const { post: singlePost } = await ifAuthor();
 
     const currentPost = generateSinglePostHtml(singlePost);

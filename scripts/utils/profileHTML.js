@@ -1,6 +1,8 @@
 import { getSinglePost } from "./singleListing.js";
 
+
 function userProfileHTML(profileData) {
+
     const { name, email, avatar, credits, wins, _count } = profileData;
     const { listings } = _count;
 
@@ -42,7 +44,7 @@ function userProfileHTML(profileData) {
 
     const winElement = document.createElement('p');
     winElement.classList.add('h5');
-    winElement.textContent = `Wins: ${wins.length}`;
+    winElement.textContent = `Current wins: ${wins.length}`;
 
     // If there are wins, create a list to display the names
     if (wins.length > 0) {
@@ -50,7 +52,7 @@ function userProfileHTML(profileData) {
         wins.forEach(async (win) => {
             const post = await getSinglePost(win);
             const postName = post.title;
-            console.log(post)
+
             const listItem = document.createElement('li');
 
             const link = document.createElement('a');

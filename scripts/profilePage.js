@@ -3,20 +3,22 @@ import { getFromLocalStorage } from "./utils/localStorage.js";
 import { userProfileHTML } from "./utils/profileHTML.js";
 import { generatePostHtml } from "./utils/generateHTML.js"
 
+
 document.addEventListener('DOMContentLoaded', async function () {
+
     const profileContainer = document.getElementById('profileContainer');
     profileContainer.textContent = '';
 
     try {
         const name = getFromLocalStorage('userName');
         const accessToken = getFromLocalStorage('accessToken');
+
         // Fetch user profile
         const response = await fetch(`${PROFILES_API_URL}/${name}`, {
             method: 'GET',
             headers: { Authorization: `Bearer ${accessToken}` },
         }, true);
         const profileData = await response.json();
-        console.log(profileData);
 
         // Fetch user listings
         const listingsResponse = await fetch(`${PROFILES_API_URL}/${name}/listings`, {
@@ -25,7 +27,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
         const listingsData = await listingsResponse.json();
-        console.log(listingsData);
 
         // Render profile HTML
         const profile = userProfileHTML(profileData);
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Render listings HTML
         const listingsContainer = document.getElementById('listingsContainer');
-        listingsContainer.innerHTML = ''; // Clear previous listings
+        listingsContainer.innerHTML = '';
 
         listingsData.forEach(listing => {
             const listingElement = generatePostHtml(listing);

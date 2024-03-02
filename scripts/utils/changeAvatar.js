@@ -1,12 +1,16 @@
 import { PROFILES_API_URL } from "../constants.js";
 import { getFromLocalStorage } from "../utils/localStorage.js";
 
+
 const avatarForm = document.querySelector('#avatarForm');
 const avatarURL = document.querySelector('#avatar');
 
+
 async function changeAvatar(avatar) {
+
     const name = getFromLocalStorage('userName');
     const accessToken = getFromLocalStorage('accessToken');
+
     try {
         const postBody = JSON.stringify(avatar);
         const changeAvatarResponse = await fetch(`${PROFILES_API_URL}/${name}/media`, {
@@ -17,7 +21,7 @@ async function changeAvatar(avatar) {
                 Authorization: `Bearer ${accessToken}`
             },
         }, true);
-        console.log(changeAvatarResponse);
+
         window.location.href = '/profile';
     }
     catch (error) {
@@ -26,7 +30,9 @@ async function changeAvatar(avatar) {
     }
 }
 
+
 avatarForm.addEventListener('submit', (event) => {
+
     event.preventDefault();
     const newAvatar = {
         avatar: avatarURL.value,

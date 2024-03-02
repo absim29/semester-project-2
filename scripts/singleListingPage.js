@@ -33,7 +33,7 @@ async function displaySinglePost(post) {
         postForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             await editPost(post);
-            console.log('Post edited successfully.');
+
             window.location.reload();
         });
 
@@ -45,7 +45,7 @@ async function displaySinglePost(post) {
         deleteButton.addEventListener('click', async (event) => {
             event.preventDefault();
             await deletePost(post);
-            console.log('Post deleted successfully.');
+
             window.location.href = '/profile';
         });
 
@@ -54,9 +54,11 @@ async function displaySinglePost(post) {
     }
 
     const bids = await bidAmounts();
-    if (bids) {
+
+    if (bids.length > 0) {
         // Create a list element to display bid amounts
         const current = document.createElement('p');
+        current.classList.add('mt-sm-2', 'mt-2');
         current.textContent = 'Current bids';
 
         const bidList = document.createElement('ul');
@@ -73,7 +75,6 @@ async function displaySinglePost(post) {
 
         currentPost.appendChild(bidList);
     }
-
 
     listingContainer.appendChild(currentPost);
 }

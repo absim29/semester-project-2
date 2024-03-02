@@ -1,4 +1,3 @@
-
 import { fetchData } from "../fetchData.js";
 import { singlePostId } from "./singleListing.js";
 import { LISTINGS_API_URL } from "../constants.js";
@@ -13,7 +12,7 @@ async function bidAmounts() {
         const bids = response.bids;
         bids.forEach(bid => {
             const bidAmount = bid.amount;
-            console.log('Bid Amount:', bidAmount);
+
         });
         return bids;
     } catch (error) {

@@ -21,7 +21,6 @@ async function sellerUser() {
         }, true);
 
         const profileData = await response.json();
-        console.log(profileData);
 
         // Fetch user listings
         const listingsResponse = await fetch(sellerAPI + `/listings`, {
@@ -30,7 +29,6 @@ async function sellerUser() {
         });
 
         const listingsData = await listingsResponse.json();
-        console.log(listingsData);
 
         // Render profile HTML
         const profile = userProfileHTML(profileData);
@@ -38,7 +36,7 @@ async function sellerUser() {
 
         // Render listings HTML
         const listingsContainer = document.getElementById('listingsContainer');
-        listingsContainer.innerHTML = ''; // Clear previous listings
+        listingsContainer.innerHTML = '';
 
         listingsData.forEach(listing => {
             const listingElement = generatePostHtml(listing);

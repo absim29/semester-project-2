@@ -36,11 +36,9 @@ function generateSinglePostHtml(post) {
     const bidInfo = document.createElement('div');
     bidInfo.id = "bidInfo";
 
-
     const errorDiv = document.createElement('div');
     errorDiv.classList.add('text-danger', 'text-center');
     errorDiv.id = 'error-div';
-
 
     if (isLoggedIn) {
         const bidCount = document.createElement('p');
@@ -64,7 +62,6 @@ function generateSinglePostHtml(post) {
         hour: 'numeric',
         minute: 'numeric',
     });
-
 
     deadline.textContent = `Ends At: ${formattedEndDate} `;
 
@@ -105,6 +102,7 @@ function generateSinglePostHtml(post) {
         viewButton.classList.add('btn', 'btn-lg', 'bg-info', 'mt-5', 'px-5', 'text-white', 'w-80', 'mx-auto', 'd-flex');
 
         bidForm.addEventListener('submit', async (event) => {
+
             event.preventDefault();
             let bidAmount = numberInput.value.trim();
             bidAmount = parseFloat(bidAmount);
@@ -113,7 +111,6 @@ function generateSinglePostHtml(post) {
                 alert('Bid amount must be a number between 1 and 100.');
                 return;
             }
-            console.log('Bid amount:', bidAmount);
 
             await bidOnListing(bidAmount);
 
@@ -135,12 +132,14 @@ function generateSinglePostHtml(post) {
 
         const sellerElement = document.createElement('p');
         sellerElement.classList.add('h5');
+
         const sellerAnchor = document.createElement('a');
         sellerAnchor.classList.add('text-warning');
         sellerAnchor.style.textDecoration = 'none';
         sellerAnchor.href = `../../seller-page/?name=${seller.name} `;
         sellerAnchor.textContent = seller.name;
         sellerElement.textContent = `Seller: `;
+
         sellerElement.appendChild(sellerAnchor);
         bidInfo.appendChild(sellerElement);
 

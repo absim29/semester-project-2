@@ -1,13 +1,16 @@
 import { checkUserLogin } from "./checkUserLogin.js";
 const isLoggedIn = checkUserLogin();
 
+
 function generatePostHtml(post) {
+
     const { title, description, media, endsAt, _count } = post;
     const { bids } = _count;
 
     const postWrapper = document.createElement('div');
     postWrapper.classList.add('col-xs', 'col-md-5', 'col-lg-3', 'col-xl-3', 'mb-5', 'mx-1', 'overflow-hidden', 'd-flex', 'flex-column', 'card', 'py-2', 'shadow-sm', 'text-center');
     postWrapper.style.maxHeight = '700px';
+    postWrapper.style.width = '350px';
 
     const cardLeft = document.createElement('div');
     cardLeft.classList.add('col');
@@ -18,6 +21,7 @@ function generatePostHtml(post) {
         // Set src attribute to fallback image path if the original image fails to load
         image.src = '../../images/logo.png';
     });
+
     if (media) {
         image.src = media;
     } else {
@@ -60,6 +64,7 @@ function generatePostHtml(post) {
     const text = document.createElement('p');
     text.textContent = description;
     text.style.overflow = 'scroll';
+    text.style.maxWidth = '400px';
 
     const viewButton = document.createElement('button');
     viewButton.textContent = "View";
@@ -76,9 +81,6 @@ function generatePostHtml(post) {
             window.location.href = `../../single-listing-no-login/?id=${post.id}`;
         });
     }
-
-
-
 
     bidInfo.append(deadline);
 

@@ -5,6 +5,7 @@ import { getFromLocalStorage } from "./utils/localStorage.js";
 
 
 async function bidOnListing(bidAmount) {
+
     try {
         const BID_API_URL = `${LISTINGS_API_URL}/${singlePostId()}/bids`;
         const accessToken = getFromLocalStorage('accessToken');
@@ -18,7 +19,7 @@ async function bidOnListing(bidAmount) {
                 amount: bidAmount
             }),
         }, true)
-        console.log(response);
+
         window.location.reload();
     }
     catch (error) {
