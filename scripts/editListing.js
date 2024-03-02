@@ -33,7 +33,7 @@ async function editPost() {
 
 var descriptionInput = document.getElementById("edit-post-description");
 
-var charCount = document.getElementById("char-count");
+var charCount = document.getElementById("count");
 
 // Function to update character count display
 function updateCharCount() {
