@@ -99,7 +99,7 @@ function generateSinglePostHtml(post) {
         const viewButton = document.createElement('button');
         viewButton.textContent = "Bid";
         viewButton.id = "bidButton";
-        viewButton.classList.add('btn', 'btn-lg', 'bg-info', 'mt-5', 'px-5', 'text-white', 'w-80', 'mx-auto', 'd-flex');
+        viewButton.classList.add('btn', 'btn-lg', 'bg-primary', 'mt-5', 'px-5', 'text-white', 'w-80', 'mx-auto', 'd-flex');
 
         bidForm.addEventListener('submit', async (event) => {
 
