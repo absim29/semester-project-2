@@ -37,14 +37,18 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav">
-              <a
-                href="#"
-                class="nav-link active"
-                data-bs-toggle="modal"
-                data-bs-target="#loginModal"
-                >Login
-              </a>
-              <a class="nav-link" href="listings-no-login/">Listings</a>
+              <li>
+                <a
+                  href="#"
+                  class="nav-link active"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                  >Login
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="listings-no-login/">Listings</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -131,7 +135,6 @@
                     class="form-control"
                     name="reg-email"
                     id="reg-email"
-                    aria-describedby="email"
                     required
                     placeholder="Please use a Noroff email"
                     pattern="^[\w\-.]+@(stud.)?noroff.no$"
@@ -204,7 +207,6 @@
                     name="login-email"
                     class="form-control"
                     id="login-email"
-                    aria-describedby="emai"
                     required
                   />
                 </div>
