@@ -86,7 +86,7 @@ function userProfileHTML(profileData) {
     listingsCount.textContent = `Listings: ${listings}`;
 
     const listingsContainer = document.createElement('div');
-    listingsContainer.classList.add('col', 'd-flex', 'flex-row', 'flex-wrap', 'justify-content-center');
+    listingsContainer.classList.add('row', 'd-flex', 'justify-content-center', 'mt-4');
     listingsContainer.id = 'listingsContainer';
 
 
