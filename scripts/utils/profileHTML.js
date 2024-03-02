@@ -24,7 +24,7 @@ function userProfileHTML(profileData) {
     } else {
         profilePic.src = '../../images/logo.png';
     }
-    profilePic.alt = name;
+    profilePic.alt = name + "profile image";
     profilePic.setAttribute('data-bs-toggle', 'modal');
     profilePic.setAttribute('data-bs-target', '#avatarModal');
 

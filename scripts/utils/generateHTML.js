@@ -27,7 +27,7 @@ function generatePostHtml(post) {
     } else {
         image.src = '../../images/logo.png';
     }
-    image.alt = title;
+    image.alt = title + "post image";
 
     const titleElement = document.createElement('h3');
     titleElement.classList.add('text-center');
