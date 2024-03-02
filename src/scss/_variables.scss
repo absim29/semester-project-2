@@ -68,3 +68,11 @@ hr {
     opacity: 80%;
     
 }
+
+button {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    opacity: 90%;
+}
