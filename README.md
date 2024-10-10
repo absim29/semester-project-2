@@ -21,12 +21,10 @@ Key features of this auction website include:
 
 This project uses the following technology stack:
 
-- [React.js](https://reactjs.org/)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Bootstrap](https://getbootstrap.com)
 - [SASS](https://sass-lang.com/) – for CSS pre-processing
-- [Netlify](https://www.netlify.com/) – for hosting the website
-- [Figma](https://www.figma.com/) – for design and prototyping
-- [Trello](https://trello.com/home) – for project planning and tracking
+- [API Integration](https://docs.noroff.dev/docs/v2) - Noroff API
 
 ## Getting Started
 
