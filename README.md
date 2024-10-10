@@ -1,48 +1,87 @@
-# Semester Project 2 Auction Website Readme
+# Semester Project 2: Auction Website
 
-## Overview
+![image](/images/Screenshot%202024-10-07%20at%2014.32.28.png)
 
-This project is a semester project aimed at creating an auction website where users can list items for auction and bid on items listed by other users. The website allows registered users to manage their listings, bids, and credits while also providing a browsing experience for non-registered users.
+A semester project focused on creating an auction website where users can list items for auction, bid on items listed by other users, and manage their credits.
 
-## Features
+## Description
 
-- User registration and login functionality.
-- Ability for registered users to update their avatar and view their total credit.
-- Creation of listings with title, deadline date, media gallery, and description.
-- Bidding on listings created by other users.
-- Viewing bids made on a particular listing.
-- Searching through available listings for both registered and unregistered users.
+This project is a front-end application that connects to an existing API to create a functional auction website. Users can create accounts, add items for auction, and place bids on listings. Non-registered users can browse and search through available items, but only registered users can participate in bidding. The site also includes features for profile management and bid history tracking.
 
-## Technical Stack
+Key features of this auction website include:
 
-- **Frontend Framework**: Bootstrap
-- **CSS Framework**: SASS
-- **Hosting Service**: Netlify
-- **Design Application**: Figma
-- **Planning Application**: Trello
+- **User Registration and Login:** Only users with a stud.noroff.no email can register.
+- **Profile Management:** Users can update their avatars and view their total credits.
+- **Listing Creation:** Registered users can create item listings with a title, deadline, media gallery, and description.
+- **Bidding:** Users can bid on listings created by other users.
+- **Bid Viewing:** Users can view all bids made on a particular listing.
+- **Search Functionality:** Both registered and non-registered users can search through available listings.
 
-## Installation and Setup
+## Built With
 
-To run the project locally, follow these steps:
+This project uses the following technology stack:
 
-1. Clone the repository from the [https://github.com/absim29/semester-project-2](#) into your local machine.
-2. Navigate to the project directory.
-3. Install the necessary dependencies using [npm](https://www.npmjs.com/)
-   npm i && npm run build
-   npm run watch
-4. Start the development server.
-5. Access the application through your web browser.
+- [React.js](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com)
+- [SASS](https://sass-lang.com/) – for CSS pre-processing
+- [Netlify](https://www.netlify.com/) – for hosting the website
+- [Figma](https://www.figma.com/) – for design and prototyping
+- [Trello](https://trello.com/home) – for project planning and tracking
+
+## Getting Started
+
+### Installing
+
+To set up the project locally, follow these steps:
+
+#### Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/absim29/semester-project-2.git
+```
+
+#### Navigate to the project directory:
+
+```bash
+cd semester-project-2
+```
+
+#### Install dependencies:
+
+```bash
+npm install
+```
+
+### Running
+
+To run the app locally, execute the following command:
+
+```bash
+npm start
+```
+
+Access the application through your web browser at http://localhost:3000.
 
 ## Contributing
 
-Contributions to the project are welcome. To contribute, please follow these steps:
+Contributions are welcome! To contribute:
 
 1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/your-feature-name`).
-3. Commit your changes (`git commit -am 'Add some feature'`).
-4. Push to the branch (`git push origin feature/your-feature-name`).
-5. Create a new Pull Request.
+2. Create your feature branch (git checkout -b feature/your-feature-name).
+3. Commit your changes (git commit -am 'Add some feature').
+4. Push to the branch (git push origin feature/your-feature-name).
+5. Open a pull request for review.
+
+## Contact
+
+For further inquiries, reach out through:
+
+[My LinkedIn page](https://www.linkedin.com/in/andreea-bianca-simon-front-end-dev/)
+
+## License
+
+This project is licensed under the MIT License. You can find the details in the LICENSE file in the repository.
 
 ## Acknowledgments
 
-All API functionality is managed by an existing application provided by Noroff.
+Special thanks to Noroff for providing the API and supporting documentation, and to all contributors who have helped with feedback and ideas during the development process.
